@@ -36,3 +36,19 @@ y_pred2 = model2.predict(x_test2)
 print("Bernoulli Naive Bayes")
 print("Accuracy: ",accuracy_score(y_test,y_pred2))
 print("F1 Score: ",f1_score(y_test,y_pred2,average = 'weighted'))
+
+models = ['Multinomial','Bernoulli']
+acc = [accuracy_score(y_test,y_pred1),accuracy_score(y_test,y_pred2)]
+f1 = [f1_score(y_test,y_pred1,average = 'weighted'),f1_score(y_test,y_pred2,average = 'weighted')]
+
+x_idx = np.arange(len(models))
+w = 0.35
+
+plt.bar(x_idx - w/2,acc,w,label = "Accuracy")
+plt.bar(x_idx + w/2,f1,w,label = "F1 Score")
+plt.xlabel("Naive Bayes Model")
+plt.ylabel("Scores")
+plt.title("Multinomial vs Bernoulli")
+plt.xticks(x_idx,models)
+plt.legend()
+plt.show()
